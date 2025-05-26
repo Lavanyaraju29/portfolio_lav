@@ -1,0 +1,746 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 120%;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #000a1a, #003366); /* Dark navy to deep blue */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('image1.png') center center / cover no-repeat;
+  filter: blur(5px); /* Adjust blur level here */
+  z-index: 1;
+  opacity: 0.85; /* Slight dimming for better readability */
+}
+
+/* Keep hero content on top */
+.hero .content {
+  position: relative;
+  z-index: 2;
+}
+
+
+.content {
+  color: white;
+  padding: 20px;
+  max-width: 800px; /* Limit content width for better readability on large screens */
+  z-index: 10; /* Ensure content is above any background effects */
+  position: relative; /* Allow for relative positioning within content */
+}
+
+.name {
+  font-family: 'Monoton', cursive;
+  font-size: 4.5rem; /* Significantly larger name */
+  color: #fff; /* Pure white for the main text */
+  letter-spacing: 4px; /* More pronounced letter spacing */
+  margin-bottom: 25px; /* More space below the name */
+  display: inline-block;
+  padding-bottom: 5px; /* More padding for the underline */
+  position: relative;
+  overflow: hidden; /* For the underline animation */
+   /* Stronger, more vibrant glow */
+
+  /* New: Underline reveal animation */
+  &::after { /* Use & for nesting in SASS/SCSS, or just .name::after in plain CSS */
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4px; /* Thicker underline */
+    background: linear-gradient(90deg, #66ccff, #00ffff, #66ccff); /* Gradient underline */
+    transform: scaleX(0); /* Start hidden */
+    transform-origin: bottom left;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); /* Smooth elastic transition */
+  }
+
+  &:hover::after { /* Use & for nesting in SASS/SCSS, or just .name:hover::after in plain CSS */
+    transform: scaleX(1); /* Reveal underline on hover */
+  }
+
+  /* New: Entry animation for the name */
+  animation: slide-in-top 1s ease-out forwards;
+  opacity: 0; /* Start hidden */
+}
+
+@keyframes slide-in-top {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem; /* Larger subtitle */
+  font-weight: 300;
+  color: #e0e0e0; /* Slightly off-white for contrast */
+  margin: 15px 0 40px; /* Increased margins */
+  line-height: 1.4; /* Improve readability */
+  text-shadow: 0 0 10px #66ccff, 0 0 25px rgba(102, 204, 255, 0.7); /* Stronger, more diffused glow */
+
+  /* New: Entry animation for the subtitle */
+  animation: fade-in 1s ease-out 0.5s forwards; /* Delayed after name */
+  opacity: 0; /* Start hidden */
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.highlight {
+  font-weight: 500;
+  color: #00ffff; /* Brighter highlight color */
+  letter-spacing: 1.5px; /* More pronounced letter spacing */
+  text-shadow: 0 0 12px #00ffff, 0 0 25px rgba(0, 255, 255, 0.7); /* Stronger glow for highlight */
+}
+
+.resume-button {
+  text-decoration: none;
+  background-color: transparent;
+  color: white;
+  padding: 15px 35px; /* Larger padding for a more substantial button */
+  border-radius: 30px; /* More rounded, pill shape */
+  border: 3px solid #66ccff; /* Thicker border */
+  font-weight: 600; /* Bolder text */
+  box-shadow: 0 0 15px #66ccff, 0 0 30px rgba(102, 204, 255, 0.6); /* Stronger initial glow */
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother, elastic transition */
+  letter-spacing: 1px; /* Subtle letter spacing */
+  position: relative;
+  overflow: hidden; /* For shine effect */
+  z-index: 1; /* Ensure it's above potential pseudo-elements */
+
+  /* New: Entry animation for the button */
+  animation: pop-in 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 1s forwards; /* Bouncy pop-in effect */
+  opacity: 0; /* Start hidden */
+  transform: scale(0.5); /* Start small */
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+.resume-button:hover {
+  background-color: #66ccff;
+  color: #000;
+  box-shadow: 0 0 25px #66ccff, 0 0 50px rgba(102, 204, 255, 0.8); /* Even stronger glow on hover */
+  transform: translateY(-5px) scale(1.05); /* Lifts and slightly scales */
+}
+
+/* Optional: Add a subtle shine effect on button hover */
+.resume-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%; /* Start off-screen to the left */
+  width: 100%;
+  height: 80%;
+  background: rgba(255, 255, 255, 0.3); /* White transparent shine */
+  transform: skewX(-30deg); /* Angle the shine */
+  transition: left 0.5s ease-out;
+  z-index: -1; /* Behind the button text */
+}
+
+.resume-button:hover::after {
+  left: 100%; /* Slide across to the right on hover */
+}
+.social-links {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.social-links a {
+  text-decoration: none;
+  color: white;
+  background-color: #000;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+}
+
+.social-links a:hover {
+  background-color: #007bff;
+  color: white;
+  transform: translateX(5px);
+}
+
+
+.social-bar {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 5px;
+    }
+
+    .social-icon {
+      background-color: #000;
+      border: 1.5px solid #00bfff;
+      border-radius: 4px;
+      padding: 8px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 14px;
+      box-shadow: 0 0 4px #00bfff, 0 0 8px #00bfff;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+
+    .social-icon:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 6px #00bfff, 0 0 12px #00bfff;
+    }
+
+ /* About Me Section */
+.about-me {
+  background: linear-gradient(135deg, #001f3f, #000000);
+  color: white;
+  padding: 120px 20px; /* Ample vertical padding */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Hide anything that might overflow during animations */
+}
+
+.about-container {
+  max-width: 1100px; /* Slightly wider container for more breathing room */
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  align-items: center;
+  gap: 60px; /* Increased gap between image and text */
+  justify-content: center;
+  /* Add initial animation for the whole container */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slide-in-fade 1s ease-out forwards;
+}
+
+@keyframes slide-in-fade {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.about-image {
+  flex-shrink: 0; /* Prevent image from shrinking too much */
+  position: relative; /* Needed for pseudo-elements */
+  animation: scale-in 0.8s ease-out 0.2s forwards; /* Animation for the image itself */
+  opacity: 0; /* Start hidden for animation */
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.about-image img {
+  width: 280px; /* Slightly larger image */
+  height: 280px; /* Slightly larger image */
+  object-fit: cover;
+  border-radius: 70%;
+  border: 5px solid #66ccff; /* Thicker border */
+  box-shadow: 0 0 20px rgba(102, 204, 255, 0.6), 0 0 40px rgba(102, 204, 255, 0.4); /* Stronger initial glow */
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out; /* Smoother, more pronounced transition */
+  position: relative;
+  z-index: 2; /* Ensure image stays above any background effects */
+}
+
+.about-image img:hover {
+  transform: scale(1.1); /* More pronounced zoom on hover */
+  box-shadow: 0 0 30px #66ccff, 0 0 60px rgba(102, 204, 255, 0.8); /* Even stronger glow on hover */
+  /* Add a subtle rotation on hover */
+  transform: scale(1.1) rotate(3deg);
+}
+
+/* Optional: Add an animated border/ring effect around the image */
+.about-image::before {
+  content: '';
+  position: absolute;
+  top: -10px; /* Adjust to create space for the ring */
+  left: -10px; /* Adjust to create space for the ring */
+  right: -10px;
+  bottom: -10px;
+  border: 2px solid transparent;
+  border-radius: 30%;
+  background: conic-gradient(#66ccff, #00bfff, #66ccff); /* Conic gradient for a pulsing ring */
+  animation: rotate-border 4s linear infinite; /* Animation for the rotating border */
+  z-index: 1;
+  opacity: 0.7; /* Make it slightly transparent */
+  padding: 10px; /* Create space for the ring to show up */
+}
+
+@keyframes rotate-border {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.about-text {
+  max-width: 650px; /* Slightly wider text block */
+  font-family: 'Times New Roman', serif;
+  text-align: justify;
+  /* Animation for the text block */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slide-in-fade 1s ease-out 0.4s forwards; /* Delayed animation */
+}
+
+.about-text h2 {
+  font-size: 2.8rem; /* Larger heading */
+  margin-bottom: 20px; /* More space below heading */
+  color: #66ccff;
+  text-shadow: 0 0 15px #66ccff, 0 0 30px rgba(102, 204, 255, 0.7); /* Stronger text shadow */
+  text-align: center;
+  width: 100%;
+  letter-spacing: 1px; /* Subtle letter spacing */
+}
+
+.about-text p {
+  font-family: inherit;
+  font-size: 1.15rem; /* Slightly adjusted font size for readability */
+  line-height: 1.8; /* Increased line height for better readability */
+  font-weight: 300;
+  text-align: justify;
+  margin-bottom: 25px; /* More space before the button */
+  color: #e0e0e0; /* Slightly lighter text for contrast */
+}
+
+.resume-button-container {
+  text-align: center;
+  margin-top: 30px; /* More space above the button */
+  /* Animation for the button container */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slide-in-fade 1s ease-out 0.6s forwards; /* Further delayed animation */
+}
+
+/* Resume Button Styling (from your previous CSS, ensure it's still present) */
+.resume-button {
+  text-decoration: none;
+  background-color: transparent;
+  color: white;
+  padding: 14px 30px; /* Larger padding */
+  border-radius: 30px; /* More rounded */
+  border: 2px solid #66ccff;
+  font-weight: 500;
+  box-shadow: 0 0 12px #66ccff, 0 0 25px rgba(102, 204, 255, 0.6); /* Enhanced initial glow */
+  transition: all 0.3s ease-in-out; /* Smooth transition for all properties */
+  letter-spacing: 1px; /* Subtle letter spacing */
+}
+
+.resume-button:hover {
+  background-color: #66ccff;
+  color: #000;
+  box-shadow: 0 0 20px #66ccff, 0 0 40px rgba(102, 204, 255, 0.8); /* Stronger glow on hover */
+  transform: translateY(-5px); /* Lift button slightly */
+}   /* Add some space above button */
+
+.section-separator {
+  width: 80%;               /* Width of the line */
+  height: 4px;              /* Thickness */
+  background: linear-gradient(90deg, #66ccff, #00bfff, #66ccff); /* Blue gradient */
+  margin: 0 auto;           /* Center horizontally */
+  box-shadow: 0 0 8px #00bfff, 0 0 15px #66ccff; /* Glow effect */
+  border-radius: 2px;       /* Rounded edges */
+}
+body {
+  margin: 0;
+  font-family: 'Times New Roman', serif;
+  background: linear-gradient(135deg, #000000, #001f3f);
+  color: white;
+}
+
+.education {
+  background: linear-gradient(135deg, #000000, #001f3f);
+  color: #ffffff;
+  padding: 80px 20px;
+  font-family: 'Times New Roman', serif;
+}/* Options Menu Section */
+.options-section {
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #001f3f, #000000);
+  text-align: center;
+}
+
+.options-section h2 {
+  font-size: 3rem; /* Slightly larger heading for more impact */
+  color: #66ccff;
+  margin-bottom: 50px; /* Increased space below heading */
+  text-shadow: 0 0 15px #66ccff, 0 0 30px rgba(102, 204, 255, 0.7); /* Stronger, more diffused glow */
+  letter-spacing: 2px; /* A bit more space between letters */
+  animation: pulse-glow 2s infinite alternate; /* Subtle pulsing glow animation */
+}
+
+@keyframes pulse-glow {
+  from {
+    text-shadow: 0 0 15px #66ccff, 0 0 30px rgba(102, 204, 255, 0.7);
+  }
+  to {
+    text-shadow: 0 0 20px #66ccff, 0 0 40px rgba(102, 204, 255, 0.9);
+  }
+}
+
+.options-container {
+  display: grid; /* Use CSS Grid for powerful layout */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns, cards at least 280px wide */
+  gap: 40px; /* Increased space between grid items */
+  max-width: 1200px; /* Wider container for more room */
+  margin: 0 auto;
+  padding: 0 20px; /* Add some horizontal padding for smaller screens */
+}
+
+.option-card {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 2px solid #66ccff;
+  border-radius: 18px; /* More rounded corners */
+  padding: 40px 30px; /* Increased padding for a more substantial look */
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), /* Custom bezier curve for smoother animation */
+              box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 0 12px rgba(102, 204, 255, 0.3), inset 0 0 6px rgba(102, 204, 255, 0.2); /* Enhanced initial shadow */
+  position: relative;
+  overflow: hidden; /* Important for the pseudo-element glow */
+
+  /* New: Initial subtle animation for card appearance */
+  animation: fade-in-up 0.8s ease-out forwards;
+  opacity: 0; /* Start hidden for animation */
+}
+
+/* Delay animation for each card */
+.options-container .option-card:nth-child(1) { animation-delay: 0.1s; }
+.options-container .option-card:nth-child(2) { animation-delay: 0.2s; }
+.options-container .option-card:nth-child(3) { animation-delay: 0.3s; }
+.options-container .option-card:nth-child(4) { animation-delay: 0.4s; }
+/* Add more if you have more cards, e.g., :nth-child(5) { animation-delay: 0.5s; } */
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.option-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(102, 204, 255, 0.4) 0%, transparent 70%); /* Brighter internal glow */
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: width 0.7s ease-out, height 0.7s ease-out, opacity 0.7s ease-out; /* Slower, smoother expansion */
+  z-index: 0;
+}
+
+.option-card:hover::before {
+  width: 350px; /* Larger expansion */
+  height: 350px; /* Larger expansion */
+  opacity: 1;
+}
+
+.option-card:hover {
+  transform: translateY(-15px) scale(1.05); /* Lifts higher and scales more noticeably */
+  box-shadow: 0 15px 30px rgba(102, 204, 255, 0.5), /* Stronger, more diffused shadow when hovered */
+              0 0 50px rgba(102, 204, 255, 0.8), /* Even stronger outer glow */
+              inset 0 0 15px rgba(102, 204, 255, 0.4); /* Enhanced inner shadow */
+  background-color: rgba(255, 255, 255, 0.18); /* Brighter background on hover */
+  border-color: #00ffff; /* Border changes to a brighter cyan */
+}
+
+.option-card i {
+  font-size: 3.5rem; /* Even larger icon */
+  margin-bottom: 20px; /* More space below icon */
+  color: #66ccff;
+  transition: transform 0.4s ease-out, color 0.4s ease-out; /* Smoother icon transition */
+  position: relative;
+  z-index: 1; /* Ensure icon is above the pseudo-element glow */
+}
+
+.option-card:hover i {
+  transform: scale(1.15) rotateY(15deg); /* Icon grows more and rotates in 3D on Y-axis */
+  color: #00ffff; /* Brighter cyan color on hover */
+}
+
+.option-card h3 {
+  font-size: 1.4rem; /* Slightly larger heading */
+  margin: 0;
+  color: white;
+  position: relative;
+  z-index: 1; /* Ensure heading is above the pseudo-element glow */
+}
+.skills-section {
+  padding: 120px 20px;
+  background-color: #000814;
+  color: white;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: #66ccff;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.skill-card {
+  background-color: #001f3f;
+  border-radius: 12px;
+  padding: 20px;
+  color: #66ccff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 10px rgba(102, 204, 255, 0.2);
+}
+
+.skill-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #66ccff;
+}
+
+.skill-card i {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+.options-section h2 {
+  font-size: 2.5rem;
+  color: #66ccff;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #66ccff;
+}
+/* education.css */
+.education-section {
+  background-color: #000c1f;
+  padding: 100px 20px;
+  text-align: center;
+  color: white;
+}
+
+.education-title {
+  font-size: 3rem;
+  color: #00cfff;
+  margin-bottom: 50px;
+  text-shadow: 0 0 10px #00cfff, 0 0 20px #00cfff;
+}
+
+.education-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.education-card {
+  background-color: #0e1c2e;
+  border-radius: 20px;
+  width: 300px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.education-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+}
+
+.education-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.education-info {
+  padding: 20px;
+  text-align: left;
+}
+
+.education-info h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.edu-year {
+  font-size: 0.95rem;
+  color: #00cfff;
+  margin-bottom: 10px;
+}
+
+.edu-highlight {
+  font-weight: 600;
+  color: whitesmoke;
+  margin-top: 10px;
+  font-size: 1rem;
+  text-shadow: 0 0 4px #00d5ff;
+}
+.footer {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #222;
+  color: #eee;
+  font-size: 14px;
+}
+
+.footer a {
+  color: #eee;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #0a66c2; /* LinkedIn blue as hover color */
+}
+
+.footer-social-icons {
+  margin-top: 10px;
+}
+
+.footer-social-icons a {
+  margin: 0 12px;
+  color: #eee;
+  transition: color 0.3s ease;
+}
+
+
+.navbar {
+    background-color: #000; /* Black background as in your image */
+    color: #fff;
+    padding: 10px 50px; /* Adjust padding as needed */
+    display: flex;
+    justify-content: space-between; /* Puts logo on left, links on right */
+    align-items: center; /* Vertically centers items */
+    border-bottom-left-radius: 15px; /* Rounded corners as in image */
+    border-bottom-right-radius: 15px;
+    position: sticky; /* Makes the navbar stick to the top when scrolling */
+    top: 0;
+    z-index: 1000; /* Ensures the navbar stays on top of other content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.logo {
+    font-family: 'Dancing Script', cursive; /* A script font similar to the image */
+    font-size: 30px; /* Adjust size as needed */
+    color: #ce93d8; /* Purple color for "Priya" */
+    text-shadow: 0 0 5px #ce93d8; /* Subtle glow effect */
+}
+
+.nav-links ul {
+    list-style: none; /* Removes bullet points */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Arranges links in a row */
+}
+
+.nav-links li {
+    margin-left: 40px; /* Space between links */
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none; /* Removes underline from links */
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 0;
+    transition: color 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+
+.nav-links a:hover {
+    color: #ce93d8; /* Change color on hover */
+}
+
+/* Placeholder for the rest of your page content */
+.content-placeholder {
+    height: 1000px; /* Example height to demonstrate sticky navbar */
+    background-color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}

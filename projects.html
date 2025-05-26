@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Projects</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(135deg, #000a1a, #001f4d); /* Darker blue gradient */
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative; /* Needed for pseudo-elements */
+    }
+
+    body::before,
+    body::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    body::before {
+      background: radial-gradient(circle at 20% 80%, rgba(0, 51, 102, 0.3) 0%, transparent 50%); /* Blue glow bottom-left */
+      animation: glow1 15s infinite alternate ease-in-out;
+    }
+
+    body::after {
+      background: radial-gradient(circle at 80% 20%, rgba(0, 102, 204, 0.2) 0%, transparent 50%); /* Blue glow top-right */
+      animation: glow2 18s infinite alternate ease-in-out;
+    }
+
+    @keyframes glow1 {
+      0% { transform: translate(0, 0); opacity: 0.3; }
+      100% { transform: translate(10%, -10%); opacity: 0.4; }
+    }
+
+    @keyframes glow2 {
+      0% { transform: translate(0, 0); opacity: 0.2; }
+      100% { transform: translate(-10%, 10%); opacity: 0.3; }
+    }
+
+    h1 {
+      text-align: center;
+      color: #ffffff;
+      margin-bottom: 40px;
+      text-shadow: 0 0 15px rgba(0, 179, 255, 0.8), 0 0 30px rgba(0, 179, 255, 0.6); /* Blue glow for title */
+      letter-spacing: 2px;
+      animation: fadeInDown 1s ease-out, pulsate 2s infinite alternate; /* Added pulsate effect */
+    }
+
+    @keyframes pulsate {
+      0% { text-shadow: 0 0 10px rgba(0, 179, 255, 0.8), 0 0 20px rgba(0, 179, 255, 0.6); }
+      100% { text-shadow: 0 0 20px rgba(0, 179, 255, 1), 0 0 40px rgba(0, 179, 255, 0.8); }
+    }
+
+    .project-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      width: 100%;
+      padding: 0 10px;
+    }
+
+    @media (max-width: 992px) {
+      .project-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .project-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .project-card {
+      background-color: #0d1a2d; /* Darker background for cards */
+      color: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+      transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out, background-color 0.3s ease;
+      position: relative;
+      animation: fadeInUp 0.8s ease-out forwards;
+      opacity: 0;
+      border: 1px solid rgba(0, 179, 255, 0.3); /* Subtle blue border */
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 15px;
+      padding: 2px; /* Controls the size of the glow */
+      background: linear-gradient(45deg, #00b3ff, #0056b3, #00b3ff); /* Blue glow border */
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .project-card:hover::before {
+      opacity: 1;
+      animation: rotateGlow 3s linear infinite;
+    }
+
+    @keyframes rotateGlow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    .project-card:nth-child(1) { animation-delay: 0.1s; }
+    .project-card:nth-child(2) { animation-delay: 0.2s; }
+    .project-card:nth-child(3) { animation-delay: 0.3s; }
+    .project-card:nth-child(4) { animation-delay: 0.4s; }
+    .project-card:nth-child(5) { animation-delay: 0.5s; }
+
+    .project-card:hover {
+      transform: translateY(-15px) scale(1.03);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 179, 255, 0.7); /* Enhanced glow on hover */
+      background-color: #1a2e47; /* Slightly lighter on hover */
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 1px solid #0056b3; /* Blue border below image */
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .project-info {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .project-info h3 {
+      margin: 10px 0 15px;
+      color: #e0f2ff; /* Lighter text for heading */
+      font-size: 1.4em;
+      transition: color 0.3s ease;
+    }
+
+    .project-card:hover .project-info h3 {
+      color: #00b3ff; /* Brighter blue on hover */
+    }
+
+    .project-info a {
+      text-decoration: none;
+      color: #00ccff; /* Bright blue for link */
+      font-weight: bold;
+      position: relative;
+      padding-bottom: 5px;
+      font-size: 1.1em;
+      transition: color 0.3s ease;
+    }
+
+    .project-info a::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+      width: 0;
+      height: 3px;
+      background-color: #007bff;
+      transition: width 0.3s ease-in-out;
+      border-radius: 2px;
+    }
+
+    .project-info a:hover::after {
+      width: 100%;
+      background-color: #00b3ff; /* Brighter blue on hover */
+    }
+
+    .project-info a:hover {
+      color: #00e6ff; /* Even brighter blue on hover */
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>My Projects</h1>
+
+  <div class="project-container">
+
+    <div class="project-card">
+      <img src="Project_image/hostel.png" alt="Hostel Management System">
+      <div class="project-info">
+        <h3>Hostel Management System</h3>
+        <a href="https://github.com/Lavanyaraju29/Open-source-software-mini-project" target="_blank">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="Project_image/quiz.png" alt="quiz">
+      <div class="project-info">
+        <h3>Automatic Quiz Generator</h3>
+        <a href="https://github.com/Lavanyaraju29/Automatic_question_generator" target="_blank">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="Project_image/VPN.png" alt="VPN">
+      <div class="project-info">
+        <h3>VPN Network Traffic Detection</h3>
+        <a href="https://github.com/Lavanyaraju29/VPN-network-traffic-detection" target="_blank">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="Project_image/dog.png" alt="Dog">
+      <div class="project-info">
+        <h3>Dog Disease Diagnosis</h3>
+        <a href="https://github.com/Lavanyaraju29/Dog-disease" target="_blank">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="Project_image/mother.png" alt="Child">
+      <div class="project-info">
+        <h3>Pregnancy Risk Prediction and Child Record Management System</h3>
+        <a href="https://github.com/Lavanyaraju29/Mother-and-Child-Project/tree/main" target="_blank">View Project</a>
+      </div>
+    </div>
+
+     <div class="project-card">
+      <img src="Project_image/hospital.png" alt="Hospital">
+      <div class="project-info">
+        <h3>Hospital Management System</h3>
+        <a href="https://github.com/Lavanyaraju29/Hospital-Management-system" target="_blank">View Project</a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

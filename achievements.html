@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Achievements</title>
+  <!-- Swiper CSS -->
+<link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet" />
+
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('background.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #ffffff;
+    }
+
+    .container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 50px 20px;
+      backdrop-filter: blur(6px);
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .achievement-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 900px;
+      width: 100%;
+      box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+      backdrop-filter: blur(10px);
+      margin-bottom: 40px;
+      animation: fadeIn 1s ease-in;
+    }
+
+    .achievement-card h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 30px;
+      color: #00eaff;
+      text-shadow: 0 0 10px #00eaff;
+      margin-bottom: 20px;
+        text-align: justify; 
+    }
+
+    .achievement-card ul {
+      text-align: left;
+      line-height: 1.8;
+      list-style-type: square;
+      padding-left: 20px;
+    }
+
+    .centered-cert{
+      max-width: 40%;
+      border-radius: 20px;
+      margin-top: 30px;
+      border: 4px solid #00eaff;
+      box-shadow: 0 0 25px rgba(0,234,255,0.6);
+    }
+
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .photo-gallery img {
+      width: 100%;
+      border-radius: 16px;
+      border: 2px solid #fff;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .photo-gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .achievement-card {
+        padding: 20px;
+      }
+    }
+
+    .centered-cert {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;  /* or any size you want */
+}
+/* Masonry style using CSS columns */
+
+.photo-gallery img {
+  width: 100%;
+  max-width: 250px;
+  border-radius: 16px;
+  border: 2px solid #00eaff;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.6);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.photo-gallery img:hover {
+  transform: scale(1.05);
+}
+/* Style GLightbox captions */
+.glightbox-desc {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 234, 255, 0.7);
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  box-shadow: 0 0 15px rgba(0, 234, 255, 0.8);
+}
+
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="achievement-card">
+      <h2>🏆 Ascent Award - Design Spark Challenge</h2>
+      <ul>
+        <li>Awarded for outstanding performance in the 50-hour continuous hackathon conducted by the School of Design Thinking & Intellect (07/03/2025 - 09/03/2025).</li>
+        <li>Received an on-spot healthcare challenge: <strong>“Integrated Hospital Solution”</strong>.</li>
+        <li>Built a Hospital Management Website using design thinking principles under 50 hours.</li>
+        <li><strong>Received a cash prize</strong> in recognition of innovation and execution excellence.</li>
+      </ul>
+  <a href="images/design.jpg" class="glightbox" data-gallery="fullGallery">
+  <img src="images/design.jpg" alt="Certificate" class="centered-cert" />
+</a>
+
+
+    </div>
+
+<!-- Hidden photo links for lightbox gallery -->
+<div style="display:none;">
+  <a href="images1/photo1.jpg" class="glightbox" data-gallery="fullGallery"></a>
+  <a href="images1/photo2.jpg" class="glightbox" data-gallery="fullGallery"></a>
+  <a href="images1/photo3.png" class="glightbox" data-gallery="fullGallery" ></a>
+<a href="images1/photo4.jpg" class="glightbox" data-gallery="fullGallery"></a>
+  <a href="images1/photo5.jpg" class="glightbox" data-gallery="fullGallery"></a>
+</div>
+
+
+
+</div>
+<div class="container">
+    <div class="achievement-card">
+      <h2>🏆 ⌨️ Typewriting Junior – First Class with Distinction</h2>
+      <ul>
+        <li>Successfully completed the <strong>Grade Typewriting Exam</strong> in English.</li>
+        <li>Awarded <strong>First Class with Distinction</strong>, recognizing high typing speed and accuracy.</li>
+        <li>Certified by the Government Technical Examinations Board</li>
+      </ul>
+  <img src="images/type.png" alt="Certificate" style="width:1000px;height: 500px;" class="centered-cert" />
+</a>
+
+
+
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+<script>
+  const lightbox = GLightbox({
+    selector: '.glightbox',
+    loop: true,
+    zoomable: true,
+    draggable: true,
+  });
+</script>
+
+
+
+</body>
+</html>

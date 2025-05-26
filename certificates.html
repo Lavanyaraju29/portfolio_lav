@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Certificates</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #000000, #1e3c72);
+      color: #ffffff;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00bfff;
+      margin-bottom: 40px;
+      animation: fadeInDown 1.5s ease-out;
+    }
+
+    .certificate-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .certificate-item {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid #00bfff;
+      border-radius: 12px;
+      padding: 15px;
+      width: 320px;
+      text-align: center;
+      box-shadow: 0 0 px rgba(0, 191, 255, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease-out forwards;
+    }
+
+    .certificate-item:nth-child(1) { animation-delay: 0.5s; }
+    .certificate-item:nth-child(2) { animation-delay: 0.7s; }
+    .certificate-item:nth-child(3) { animation-delay: 0.9s; }
+
+    .certificate-item:hover {
+      transform: scale(1.05) translateY(-5px);
+      box-shadow: 0 0 25px rgba(0, 191, 255, 0.8);
+    }
+
+    .certificate-item img,
+    .certificate-item embed {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 191, 255, 0.3);
+    }
+
+    .certificate-title {
+      margin-top: 12px;
+      font-weight: bold;
+      color: #00bfff;
+      text-shadow: 0 0 5px rgba(0, 191, 255, 0.5);
+    }
+
+    .download-link {
+      color: #00bfff;
+      text-decoration: none;
+      margin-top: 10px;
+      display: inline-block;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>My Certificates</h1>
+
+  <div class="certificate-list">
+
+    <div class="certificate-item">
+      <img src="certificate/cer1.png" alt="Cloud Certificate">
+      <div class="certificate-title">AWS Cloud Practitioner</div>
+    </div>
+
+    <div class="certificate-item">
+    <img src="certificate/cer2.png" alt="Game Development">
+      <div class="certificate-title">Game Development</div>
+    </div>
+
+     
+    <div class="certificate-item">
+     <img src="certificate/cer5.png" alt="Idea">
+      <div class="certificate-title">My Idea Contest</div>
+    </div>
+
+     <div class="certificate-item">
+     <img src="certificate/cer10.png" alt="Cloud Certificate">
+      <div class="certificate-title">Responsible Generative AI</div>
+  </div>
+
+     <div class="certificate-item">
+     <img src="certificate/cer12.png" alt="Cloud Certificate">
+      <div class="certificate-title">Azure Open AI</div>
+  </div>
+
+   <div class="certificate-item">
+     <img src="certificate/cer11.png" alt="Cloud Certificate">
+      <div class="certificate-title">Azure Open AI</div>
+  </div>
+
+
+    <div class="certificate-item">
+     <img src="certificate/cer3.png" alt="Cloud Certificate">
+      <div class="certificate-title">Workshop</div>
+    </div>
+
+    
+    <div class="certificate-item">
+     <img src="certificate/cer4.png" alt="Cloud Certificate">
+      <div class="certificate-title">Symposium</div>
+    </div>
+    
+    <div class="certificate-item">
+     <img src="certificate/cer6.png" alt="Cloud Certificate">
+      <div class="certificate-title">Symposium</div>
+  </div>
+
+  <div class="certificate-item">
+     <img src="certificate/cer7.png" alt="Cloud Certificate">
+      <div class="certificate-title">Dialogue Finding</div>
+  </div>
+
+  <div class="certificate-item">
+     <img src="certificate/cer8.png" alt="Cloud Certificate">
+      <div class="certificate-title">Cartoon Auction</div>
+  </div>
+
+  
+  <div class="certificate-item">
+     <img src="certificate/cer9.png" alt="Cloud Certificate">
+      <div class="certificate-title">Sherlock Homes</div>
+  </div>
+
+  <div class="certificate-item">
+     <img src="certificate/cer13.png" alt="Cloud Certificate">
+      <div class="certificate-title">C Programming</div>
+  </div>
+
+  <div class="certificate-item">
+     <img src="certificate/cer14.png" alt="Cloud Certificate">
+      <div class="certificate-title">Java Application</div>
+  </div>
+
+  
+
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Internship</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to right, #000000, #1e3c72);
+      color: #ffffff;
+      padding: 40px 20px;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(0, 191, 255, 0.4);
+      border-radius: 50%;
+      animation: floatAndFade 15s infinite ease-in-out;
+      opacity: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00bfff;
+      font-size: 42px;
+      margin-bottom: 50px;
+      animation: fadeInDown 1.2s ease-out;
+      text-shadow: 0 0 20px rgba(0, 191, 255, 0.8);
+      z-index: 2;
+      position: relative;
+      letter-spacing: 2px;
+    }
+
+    .internship-container {
+      max-width: 900px;
+      margin: 20px auto;
+      background-color: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 40px;
+      border: 2px solid transparent;
+      box-shadow: 0 0 40px rgba(0, 191, 255, 0.4);
+      animation: fadeInUp 1.5s ease-out forwards;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  border-color 0.4s ease;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .internship-container:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 0 60px rgba(0, 191, 255, 1),
+                  0 0 30px rgba(0, 191, 255, 0.8) inset;
+      border-color: #00bfff;
+    }
+
+    .internship-details {
+      text-align: left;
+      margin-bottom: 30px;
+      width: 100%;
+      opacity: 0;
+      animation: textFadeIn 1s ease-out 1.8s forwards;
+    }
+
+    .internship-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #00bfff;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(0, 191, 255, 0.6);
+      text-align: center;
+    }
+
+    .internship-description {
+      font-size: 17px;
+      line-height: 1.8;
+      color: #e0e0e0;
+      padding: 0 10px;
+      text-align: justify;
+    }
+
+    .certificate-section {
+      text-align: center;
+      width: 100%;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideInCertificate 1s ease-out 3s forwards;
+    }
+
+    .certificate-section img {
+      width: 100%;
+      max-width: 700px;
+      border-radius: 15px;
+      border: 3px solid #00bfff;
+      box-shadow: 0 0 25px rgba(0, 191, 255, 0.6);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+    }
+
+    .certificate-section img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 40px rgba(0, 191, 255, 0.9);
+    }
+
+    .download-link {
+      display: inline-block;
+      margin-top: 30px;
+      background: linear-gradient(45deg, #00bfff, #007bff);
+      color: #ffffff;
+      padding: 14px 30px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0, 191, 255, 0.6);
+    }
+
+    .download-link:hover {
+      background: linear-gradient(45deg, #009acd, #0056b3);
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 8px 20px rgba(0, 191, 255, 0.9);
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes textFadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideInCertificate {
+      from { opacity: 0; transform: translateY(50px) scale(0.8); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes floatAndFade {
+      0% { transform: translateY(0) translateX(0) scale(0); opacity: 0; }
+      25% { opacity: 0.7; }
+      50% { transform: translateY(-150px) translateX(70px) scale(1.2); opacity: 0.5; }
+      75% { opacity: 0.2; }
+      100% { transform: translateY(-300px) translateX(-70px) scale(0.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="particles"></div>
+
+  <h1>My Internship Experience</h1>
+
+  <div class="internship-container">
+
+    <div class="internship-details">
+      <div class="internship-title">Internship at NSIC Technical Centre, Chennai</div>
+      <div class="internship-description">
+        NSIC Technical Services Centre, Chennai, is a government-supported hub under the National Small Industries Corporation. It provides cutting-edge technical training and industry-relevant skill development. The center's core mission is to empower students and entrepreneurs with the modern tools and advanced technologies essential for driving innovation and securing meaningful employment.
+        <br><br>
+        My project focused on the critical area of <strong>VPN Network Traffic Detection</strong>, leveraging state-of-the-art <strong>Artificial Intelligence</strong> techniques. My key contributions involved the meticulous process of capturing, robustly processing, and insightfully analyzing complex network traffic data using powerful <strong>machine learning tools</strong>.
+        <br><br>
+        I successfully completed this intensive internship, gaining invaluable practical experience and solidifying my expertise in the domain of <strong>Artificial Intelligence and Machine Learning with Python</strong>. This experience significantly enhanced my problem-solving abilities and practical application of theoretical knowledge.
+      </div>
+    </div>
+
+    <div class="certificate-section">
+      <img src="certificate/cer15.png" alt="Internship Certificate" width="200" height="700">
+    </div>
+  </div>
+
+ 
+
+</body>
+</html>
