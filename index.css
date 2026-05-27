@@ -744,3 +744,52 @@ body {
     text-align: center;
     padding: 20px;
 }
+
+@media screen and (max-width: 768px) {
+
+  .hero {
+    height: auto;
+    padding: 60px 20px;
+  }
+
+  .name {
+    font-size: 2.2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-image img {
+    width: 180px;
+    height: 180px;
+  }
+
+  .options-container {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .navbar {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .social-links,
+  .social-bar {
+    display: none;
+  }
+}
